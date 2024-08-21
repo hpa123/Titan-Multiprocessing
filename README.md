@@ -10,4 +10,4 @@ The other two important parts are **mag_traject.py** and **atmos_traject.py**. T
 
 When all is said and done, we plot energy deposition and ionization as a function of altitude, along with histograms of incident energies and angles.
 
-Both **mag_traject.py** and **atmos_traject.py** utilize parallel processing to calculate multiple particle trajectories simultaneously. As such, individual particles do not interact in the simulation, as they all exist in their own parallel (processing) universes.
+Both **mag_traject.py** and **atmos_traject.py** contain worker functions which are used with the multiprocessing module to calculate many particle trajectories simultaneously. As such, individual particles do not interact in the simulation, as they all exist in their own parallel (processing) universes.
