@@ -16,17 +16,17 @@ bulkVel = np.array([1*10**5,0,0],float)   # Bulk (average) velocity; in the posi
 kb = 1.38*10**(-23)                       # Boltzmann Constant (Joules/Kelvin)
 
 m = 16*1.67*10**(-27)                     # Mass of Oxygen-16 (kilograms)
-titanRad=2576000.0                         # Radius of Titan; Meters
+titanRad=2576000.0                        # Radius of Titan; Meters
 delX = 1000.                              # Particle Deposition Step (meters)
 dt = .3                                   # timestep; units of seconds
-tf = 10000                                  # final time; units of seconds
+tf = 10000                                # final time; units of seconds
 nstep = int(tf/dt)
 a = np.sqrt(kb*T/m)                       # Maxwell scaling factor
 
 # Superparticle Characteristics:
-APD = .05                                 # Actual Particle Density. Average CAPS data. Units of O2+/cm^3
+APD = .05                                                           # Actual Particle Density. Average CAPS data. Units of O2+/cm^3
 OPD = numParticles/((4./3.)*np.pi*((titanRad + 3*altitude)**3 - (titanRad+altitude)**3)*(10**6)) # "Our Particle Density"; units of O2+/cm^3. Density of particles in volume we start them in (a spherical shell around Titan)
-SPSF=APD/OPD # "Super Particle Scaling Factor"; the number of particles each simulated particle represents.
+SPSF=APD/OPD                                                        # "Super Particle Scaling Factor"; the number of particles each simulated particle represents.
 PIA = 0 # number of particles that enter the atmosphere of Titan
 AtmP = np.zeros((numParticles,7))     # empty array to be used to store information about particles
 
@@ -52,13 +52,18 @@ from titanPolyfit import fitS_N, fitS_E, fitN2, getPolyVal, N2Dens, fitIonAndCha
 
 # Gives Maxwellian distribution of velocities
 def MaxwellDist(v):
-    return numParticles*4*np.pi*(v**2)*((2*np.pi*kb*T/m)**(-3./2.))*np.exp(-m*(v**2)/(2*kb*T))
+    factor = numParticles*4*np.pi*((2*np.pi*kb*T/m)**(-3./2.))
+    return factor*(v**2)*np.exp(-m*(v**2)/(2*kb*T))
 
 def f_ode(values,t):
     pos=values[:3]
     vel=values[3:6]
-    E,B = EandB(pos + rShift, bfield, efield) # calculating field values at current position
-    a = (q/m)*(E+np.cross(vel,B)) # get acceleration
+    # calculating field values at current position
+    E,B = EandB(pos + rShift, bfield, efield) 
+
+    # get acceleration
+    a = (q/m)*(E+np.cross(vel,B)) 
+    
     return np.concatenate((vel,a))
 
 def magF(r):
