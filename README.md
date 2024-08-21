@@ -2,7 +2,7 @@
 
 A computational physics project which simulates the deposition of ions (particles with net electric charge) into the atmosphere of Titan, Saturn's largest moon. Ions in Saturn's magnetospheric plasma collide with Titan's atmosphere as the moon passes through the plasma. The ions deposit energy and induce ionization in the atmosphere. The goal of the project was to demonstrate whether these impacting ions alone could explain observations of free electron density and temperature fluctuations in Titan's atmosphere, which were recorded by the Cassini-Huygens space probe.
 
-*Note: if you try to download and run this code it will not work, as I have excluded the very large collections of electromagnetic field values, which inform the calculations done to track particle trajectories outside of Titan's atmosphere.*
+*Note: if you try to download and run this code, it will not work, as I have excluded the very large collections of electromagnetic field values, which inform the calculations done to track particle trajectories outside of Titan's atmosphere.*
 
 The first important part of the code is the **titanUtil.py** file. This contains the *Particle class*, which is the fundamental unit of the simulation. The methods of this class are primarly concerned with calculating relevant physical quantities and storing histories of the particles' trajectories and energies. We also calculate the particles' collision cross-section (essentially, an individual particle's likelihood to collide with atmospheric nitrogen, which changes as a function of the particle's trajectory and energy).
 
