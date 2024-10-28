@@ -1,6 +1,6 @@
 # Titan-Multiprocessing
 
-A computational physics project which simulates the deposition of ions (particles with net electric charge) into the atmosphere of Titan, Saturn's largest moon. Ions in Saturn's magnetospheric plasma collide with Titan's atmosphere as the moon passes through the plasma. The ions deposit energy and induce ionization in the atmosphere. The goal of the project was to demonstrate whether these impacting ions alone could explain observations of free electron density and temperature fluctuations in Titan's atmosphere, which were recorded by the Cassini-Huygens space probe.
+A (now quite old) computational physics project which simulates the deposition of ions (particles with net electric charge) into the atmosphere of Titan, Saturn's largest moon. Ions in Saturn's magnetospheric plasma collide with Titan's atmosphere as the moon passes through the plasma. The ions deposit energy and induce ionization in the atmosphere. The goal of the project was to demonstrate whether these impacting ions alone could explain observations of free electron density and temperature fluctuations in Titan's atmosphere, which were recorded by the Cassini-Huygens space probe.
 
 *Note: if you try to download and run this code, it will not work, as I have excluded the very large collections of electromagnetic field values which inform the calculations done to track particle trajectories outside of Titan's atmosphere.*
 
